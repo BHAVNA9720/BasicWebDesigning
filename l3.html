@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab program 3</title>
+	<script type="text/javascript">
+		function animate()
+		{
+			var val=window.getComputedStyle(document.getElementById("text")).fontSize;
+			var size=parseInt(val);
+			var state="growing";
+			var timer=setInterval(textanimate,100)//contiously calling of the funstion
+
+			function textanimate()
+			{
+				if(state=="growing")
+				{
+					size++;
+					document.getElementById("text").innerHTML="TEXT-GROWING";
+					document.getElementById("text").style.color="red";
+					document.getElementById("text").style.fontSize=size+"pt";
+				}
+				if(state=="shrinking")
+				{
+					size--;
+					document.getElementById("text").innerHTML="TEXT-SHRINKING";
+					document.getElementById("text").style.color="blue";
+					document.getElementById("text").style.fontSize=size+"pt";
+				}
+				if(size==50)
+				{
+					state="shrinking";
+				}
+				if(size==5)
+				{
+					state="growing";                                          //clearInterval(timer);
+				}
+			}
+
+		}
+	</script>
+</head>
+<body onload="animate()">
+  <p style="text-align: center" id="text"></p>
+</body>
+</html>
